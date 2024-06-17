@@ -24,19 +24,19 @@ tf.test.is_gpu_available(
 )
 #divide dataset in open eye and close eye folders.
 
-raw_dataset_path = r'C:\Users\aditi\OneDrive\Desktop\UC\semester2\PRML\drowsieness_detction\mrlEyes_2018_01'
+raw_dataset_path = r'\drowsieness_detction\mrlEyes_2018_01'
 
 for dirpath, dirname, filenames in os.walk(raw_dataset_path):
     for i in  [file for file in filenames if  file.endswith('.png')]:
         if i.split('_')[4] == '0':
-            shutil.copy(src = dirpath+'/'+i, dst = r'C:\Users\aditi\OneDrive\Desktop\UC\semester2\PRML\drowsieness_detction\dataset\close_eyes')
+            shutil.copy(src = dirpath+'/'+i, dst = r'\drowsieness_detction\dataset\close_eyes')
             
         else:
-            shutil.copy(src = dirpath+'/'+i, dst = r'C:\Users\aditi\OneDrive\Desktop\UC\semester2\PRML\drowsieness_detction\dataset\open_eyes')
+            shutil.copy(src = dirpath+'/'+i, dst = r'drowsieness_detction\dataset\open_eyes')
       
 # # Creating Train / Val / Test folders
 
-source_dir = r'C:\Users\aditi\OneDrive\Desktop\UC\semester2\PRML\drowsieness_detction\dataset' # data root path
+source_dir = r'\drowsieness_detction\dataset' # data root path
 classes_dir = ['\\close_eyes', '\\open_eyes'] #total labels
 
 val_ratio = 0.15
@@ -92,12 +92,12 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
 
 test_datagen = ImageDataGenerator(rescale = 1./255)
 
-train_data = train_datagen.flow_from_directory(r'C:\Users\aditi\OneDrive\Desktop\UC\semester2\PRML\drowsieness_detction\dataset\new_train_dataset',
+train_data = train_datagen.flow_from_directory(r'\drowsieness_detction\dataset\new_train_dataset',
                                                  target_size = (224, 224),
                                                  batch_size = 32,
                                                  class_mode = 'binary')
 
-test_data = test_datagen.flow_from_directory(r'C:\Users\aditi\OneDrive\Desktop\UC\semester2\PRML\drowsieness_detction\dataset\new_test_dataset',
+test_data = test_datagen.flow_from_directory(r'\drowsieness_detction\dataset\new_test_dataset',
                                             target_size = (224, 224),
                                             batch_size = 32,
                                             class_mode = 'binary')
@@ -214,11 +214,8 @@ model.summary()
 
 import numpy as np
 from tensorflow.keras.preprocessing import image
-test_image = image.load_img(r'C:\Users\aditi\OneDrive\Desktop\s0001_00001_0_0_0_0_0_01.png', target_size = (224,224))
+test_image = image.load_img(r'\s0001_00001_0_0_0_0_0_01.png', target_size = (224,224))
 test_image = image.img_to_array(test_image)
 test_image=test_image/255
 test_image = np.expand_dims(test_image, axis = 0)
 result = cnn.predict(test_image)
-
-
-img_array = 
