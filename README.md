@@ -1,0 +1,2 @@
+Drowsiness detection in driver project aims to prevent accidents caused by drowsiness in driver during driving. The project uses eye tracking to detect if a person's eyes are open closed. the project is built using python and tensorflow library. The project can provide and alert system to improve driving safety.
+the main.py file extract images from the folder and divide it to in test and train dataset and create CNN model and predict whether the eyes in the images are open or closed.
